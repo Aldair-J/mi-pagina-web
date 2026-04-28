@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía — Fases 3 y 4: Marco Teórico</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1D3A;
+    --royal: #1A3A6B;
+    --accent: #E8A020;
+    --gold: #F5C842;
+    --teal: #1E8F8A;
+    --teal-light: #2CBFB9;
+    --cream: #FDF8F0;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --light: #F0F4FA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 48px 60px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,160,32,0.18) 0%, transparent 70%);
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 200px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(30,143,138,0.15) 0%, transparent 70%);
+  }
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--navy);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    max-width: 680px;
+    position: relative;
+  }
+  .header h1 span { color: var(--gold); }
+  .header-sub {
+    margin-top: 12px;
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    font-weight: 300;
+    position: relative;
+  }
+  .phase-pills {
+    display: flex;
+    gap: 12px;
+    margin-top: 28px;
+    position: relative;
+  }
+  .pill {
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .pill-3 { background: var(--teal); color: white; }
+  .pill-4 { background: var(--accent); color: var(--navy); }
+
+  /* ── SECTION DIVIDER ── */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 36px 60px 20px;
+  }
+  .phase-number {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .phase-3 .phase-number { background: var(--teal); color: white; }
+  .phase-4 .phase-number { background: var(--accent); color: var(--navy); }
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .section-title p {
+    font-size: 13px;
+    color: var(--gray);
+    margin-top: 2px;
+  }
+  .divider {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(to right, rgba(11,29,58,0.15), transparent);
+    margin-left: 8px;
+  }
+
+  /* ── ANTECEDENTS GRID ── */
+  .grid-container { padding: 0 60px 12px; }
+
+  .antecedents-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 22px;
+    border: 1px solid rgba(11,29,58,0.08);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+  .card:nth-child(1)::before { background: linear-gradient(90deg, #1E8F8A, #2CBFB9); }
+  .card:nth-child(2)::before { background: linear-gradient(90deg, #E8A020, #F5C842); }
+  .card:nth-child(3)::before { background: linear-gradient(90deg, #3B6CB7, #5A8FD6); }
+  .card:nth-child(4)::before { background: linear-gradient(90deg, #9B59B6, #C07FD8); }
+  .card:nth-child(5)::before { background: linear-gradient(90deg, #E74C3C, #F1948A); }
+  .card:nth-child(6)::before { background: linear-gradient(90deg, #27AE60, #52D9A0); }
+
+  .card-num {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--gray);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .card-authors {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+  .card-year {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: var(--light);
+    color: var(--gray);
+    margin-bottom: 10px;
+  }
+  .card-title {
+    font-size: 12px;
+    color: #374151;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    font-style: italic;
+  }
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  .tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+  .tag-tech { background: #E8F4FD; color: #1A6FA8; }
+  .tag-inst { background: #FEF3CD; color: #856404; }
+  .tag-country { background: #D1FAE5; color: #065F46; }
+  .card-aporte {
+    font-size: 11.5px;
+    color: #4B5563;
+    line-height: 1.55;
+    border-top: 1px dashed rgba(11,29,58,0.12);
+    padding-top: 10px;
+  }
+  .card-aporte strong {
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  /* ── BASES TEÓRICAS ── */
+  .bases-section { padding: 0 60px 16px; }
+  .bases-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .base-item {
+    background: var(--navy);
+    color: white;
+    border-radius: 14px;
+    padding: 18px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .base-item::after {
+    content: '';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .base-icon {
+    font-size: 22px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .base-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+  .base-desc {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+
+  /* ── TERMINOS SECTION ── */
+  .terms-section { padding: 0 60px 16px; }
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .term-item {
+    background: white;
+    border-radius: 12px;
+    padding: 14px 16px;
+    border-left: 3px solid var(--teal);
+    border: 1px solid rgba(11,29,58,0.07);
+    border-left: 3px solid var(--teal);
+  }
+  .term-name {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .term-def {
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  /* ── PHASE 4: REDACCION ── */
+  .redaccion-section { padding: 0 60px 16px; }
+  .redaccion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 4px;
+  }
+  .redaccion-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 22px;
+    border: 1px solid rgba(11,29,58,0.08);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    align-items: start;
+  }
+  .rc-num {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .rc-num-1 { background: #E8F7F6; color: var(--teal); }
+  .rc-num-2 { background: #FEF3CD; color: #856404; }
+  .rc-num-3 { background: #EEF2FF; color: #3730A3; }
+  .rc-num-4 { background: #FDF4FF; color: #6B21A8; }
+  .rc-num-5 { background: #FEF2F2; color: #991B1B; }
+  .rc-num-6 { background: #F0FDF4; color: #166534; }
+  .rc-content {}
+  .rc-citation {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .rc-body {
+    font-size: 11.5px;
+    color: #4B5563;
+    line-height: 1.6;
+  }
+  .rc-aporte {
+    margin-top: 8px;
+    padding: 8px 10px;
+    background: var(--light);
+    border-radius: 8px;
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    padding: 24px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+  }
+  .footer-left {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+  }
+  .footer-left strong { color: var(--gold); font-weight: 600; }
+  .footer-right {
+    display: flex;
+    gap: 8px;
+  }
+  .footer-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+  }
+  .footer-dot:nth-child(1) { background: var(--teal); }
+  .footer-dot:nth-child(2) { background: var(--accent); }
+  .footer-dot:nth-child(3) { background: var(--gold); }
+
+  /* connector line between phases */
+  .phase-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 4px;
+  }
+  .connector-line {
+    width: 2px; height: 30px;
+    background: linear-gradient(to bottom, var(--teal), var(--accent));
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="badge">Marco Teórico · Tesis</div>
+  <h1>Sistema Web para la Gestión de<br><span>Movilidad Académica</span> · UAC</h1>
+  <p class="header-sub">Universidad Andina del Cusco · Base de Datos Centralizada y Power BI</p>
+  <div class="phase-pills">
+    <span class="pill pill-3">Fase 3 — Estructuración del Contenido</span>
+    <span class="pill pill-4">Fase 4 — Redacción</span>
+  </div>
+</div>
+
+<!-- ═══════════ FASE 3 ═══════════ -->
+
+<!-- Antecedentes -->
+<div class="section-header phase-3">
+  <div class="phase-number">3</div>
+  <div class="section-title">
+    <h2>Tabla de Antecedentes</h2>
+    <p>6 estudios de referencia validados</p>
+  </div>
+  <div class="divider"></div>
+</div>
+
+<div class="grid-container">
+  <div class="antecedents-grid">
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-num">Antecedente 01</div>
+      <div class="card-authors">Yildiz & Yildirim</div>
+      <span class="card-year">2022 · Internacional</span>
+      <div class="card-title">Student Mobility Management System and Business Intelligence Solution for Higher Education Institutions</div>
+      <div class="card-tags">
+        <span class="tag tag-tech">Business Intelligence</span>
+        <span class="tag tag-tech">Dashboards</span>
+        <span class="tag tag-inst">DergiPark Academic</span>
+      </div>
+      <div class="card-aporte"><strong>Aporte clave:</strong> Modelo probado de sistema web + BI para movilidad. Valida la combinación de gestión de datos y visualización estratégica.</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-num">Antecedente 02</div>
+      <div class="card-authors">Fernández Gironza & Guevara Campo</div>
+      <span class="card-year">2020 · Colombia</span>
+      <div class="card-title">Information system for national and international agreements for the internationalization area (ORI) of the Fundación Universitaria de Popayán</div>
+      <div class="card-tags">
+        <span class="tag tag-tech">Sistema web</span>
+        <span class="tag tag-tech">BD Relacional</span>
+        <span class="tag tag-country">Colombia</span>
+      </div>
+      <div class="card-aporte"><strong>Aporte clave:</strong> Evidencia que la BD estructurada centraliza y gestiona eficientemente la información institucional de movilidad.</div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-num">Antecedente 03</div>
+      <div class="card-authors">Cotrino Rico & Vega Márquez</div>
+      <span class="card-year">2017 · Colombia</span>
+      <div class="card-title">Modelo de software de apoyo para el proceso de gestión en movilidad académica</div>
+      <div class="card-tags">
+        <span class="tag tag-tech">Arquitectura cliente-servidor</span>
+        <span class="tag tag-tech">BD Relacional</span>
+        <span class="tag tag-country">Colombia</span>
+      </div>
+      <div class="card-aporte"><strong>Aporte clave:</strong> Valida el sistema web con BD relacional como solución al problema de información dispersa en movilidad académica.</div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <div class="card-num">Antecedente 04</div>
+      <div class="card-authors">Parra Payares</div>
+      <span class="card-year">2026 · Cuba/Colombia</span>
+      <div class="card-title">Desarrollo de un sistema de información para la gestión de la ORI — SIDINAL-UPC</div>
+      <div class="card-tags">
+        <span class="tag tag-tech">Sistemas web</span>
+        <span class="tag tag-tech">Bases de datos</span>
+        <span class="tag tag-inst">RCCI · UCI Cuba</span>
+      </div>
+      <div class="card-aporte"><strong>Aporte clave:</strong> Respalda el diseño de BD centralizada para RRII universitaria y la integración con Power BI.</div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <div class="card-num">Antecedente 05</div>
+      <div class="card-authors">Silva Ramírez</div>
+      <span class="card-year">2021 · Perú</span>
+      <div class="card-title">Implementación de una herramienta en Power BI para identificar alumnos en posible retiro académico — SENATI Piura–Tumbes</div>
+      <div class="card-tags">
+        <span class="tag tag-tech">Power BI</span>
+        <span class="tag tag-tech">Dashboards</span>
+        <span class="tag tag-country">Perú · UDEP</span>
+      </div>
+      <div class="card-aporte"><strong>Aporte clave:</strong> Valida Power BI en contexto educativo peruano. Evidencia su uso como componente analítico complementario a BD.</div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <div class="card-num">Antecedente 06</div>
+      <div class="card-authors">Quiroz Barbadillo</div>
+      <span class="card-year">2024 · Perú</span>
+      <div class="card-title">Sistema basado en inteligencia de negocios para apoyar la gestión administrativa del área de admisión — clínica de Lambayeque</div>
+      <div class="card-tags">
+        <span class="tag tag-tech">Business Intelligence</span>
+        <span class="tag tag-tech">Visualización</span>
+        <span class="tag tag-country">Perú · USAT</span>
+      </div>
+      <div class="card-aporte"><strong>Aporte clave:</strong> Justifica Power BI para identificar patrones por facultad, modalidad y periodo en entorno institucional peruano.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bases Teóricas -->
+<div class="section-header phase-3" style="padding-top: 28px;">
+  <div class="phase-number">3</div>
+  <div class="section-title">
+    <h2>Bases Teóricas</h2>
+    <p>Fundamentos conceptuales del marco teórico</p>
+  </div>
+  <div class="divider"></div>
+</div>
+
+<div class="bases-section">
+  <div class="bases-grid">
+    <div class="base-item">
+      <span class="base-icon">🖥️</span>
+      <div class="base-title">Sistemas de Información</div>
+      <div class="base-desc">Herramientas para recopilar, procesar y almacenar datos. Mejoran la eficiencia operativa y reducen errores administrativos en universidades.</div>
+    </div>
+    <div class="base-item">
+      <span class="base-icon">🌐</span>
+      <div class="base-title">Aplicaciones Web</div>
+      <div class="base-desc">Arquitectura cliente-servidor accesible mediante navegadores. Permite gestión centralizada sin instalación local adicional.</div>
+    </div>
+    <div class="base-item">
+      <span class="base-icon">🗄️</span>
+      <div class="base-title">Base de Datos Relacional</div>
+      <div class="base-desc">Núcleo técnico con tablas relacionadas (1NF, 2NF, 3NF). Garantiza integridad y trazabilidad de participantes, modalidades y periodos.</div>
+    </div>
+    <div class="base-item">
+      <span class="base-icon">🔗</span>
+      <div class="base-title">Centralización de Datos</div>
+      <div class="base-desc">Consolidación desde Excel disperso a repositorio único estructurado, mejorando acceso, control y consistencia de la información.</div>
+    </div>
+    <div class="base-item">
+      <span class="base-icon">📊</span>
+      <div class="base-title">Visualización de Datos</div>
+      <div class="base-desc">Representación gráfica que transforma datos complejos en información comprensible para análisis institucional y detección de tendencias.</div>
+    </div>
+    <div class="base-item">
+      <span class="base-icon">⚡</span>
+      <div class="base-title">Power BI (Business Intelligence)</div>
+      <div class="base-desc">Dashboards interactivos conectados a MySQL. Permite análisis por facultad, carrera, modalidad RPU/Bilateral y periodo académico.</div>
+    </div>
+    <div class="base-item">
+      <span class="base-icon">🎯</span>
+      <div class="base-title">Toma de Decisiones</div>
+      <div class="base-desc">Información organizada que apoya planificación estratégica. Permite identificar baja participación de carreras de Ingeniería en intercambios.</div>
+    </div>
+    <div class="base-item" style="background: var(--teal);">
+      <span class="base-icon">🎓</span>
+      <div class="base-title">Movilidad Académica</div>
+      <div class="base-desc">Flujos entrantes/salientes de estudiantes, docentes y administrativos. Modalidades: RPU, Bilateral y otros convenios UAC.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Términos -->
+<div class="section-header phase-3" style="padding-top: 22px;">
+  <div class="phase-number">3</div>
+  <div class="section-title">
+    <h2>Definición de Términos Clave</h2>
+    <p>Glosario conceptual del sistema propuesto</p>
+  </div>
+  <div class="divider"></div>
+</div>
+
+<div class="terms-section">
+  <div class="terms-grid">
+    <div class="term-item">
+      <div class="term-name">Sistema de Información</div>
+      <div class="term-def">Conjunto de elementos para recopilar, procesar y gestionar información institucional, optimizando decisiones y procesos. (Parra Payares, 2026)</div>
+    </div>
+    <div class="term-item">
+      <div class="term-name">Aplicación Web</div>
+      <div class="term-def">Software accesible mediante navegador en arquitectura cliente-servidor, sin instalación local requerida. (Fernández & Guevara, 2020)</div>
+    </div>
+    <div class="term-item">
+      <div class="term-name">Base de Datos Relacional</div>
+      <div class="term-def">Almacenamiento en tablas vinculadas por claves primarias/foráneas que garantiza integridad y trazabilidad. (Cotrino & Vega, 2017)</div>
+    </div>
+    <div class="term-item">
+      <div class="term-name">Centralización de Datos</div>
+      <div class="term-def">Consolidación de información dispersa en un único sistema estructurado, eliminando duplicidades e inconsistencias. (Yildiz & Yildirim, 2022)</div>
+    </div>
+    <div class="term-item">
+      <div class="term-name">Dashboard</div>
+      <div class="term-def">Panel visual interactivo que presenta información mediante gráficos e indicadores para monitoreo en tiempo real. (Silva Ramírez, 2021)</div>
+    </div>
+    <div class="term-item">
+      <div class="term-name">Power BI</div>
+      <div class="term-def">Herramienta Microsoft de Business Intelligence para dashboards interactivos conectados a diversas fuentes de datos. (Silva Ramírez, 2021)</div>
+    </div>
+    <div class="term-item">
+      <div class="term-name">Movilidad Académica</div>
+      <div class="term-def">Desplazamiento temporal de estudiantes, docentes o administrativos entre instituciones en modalidades RPU, Bilateral y otros convenios.</div>
+    </div>
+    <div class="term-item">
+      <div class="term-name">Normalización (1NF-3NF)</div>
+      <div class="term-def">Proceso de organizar tablas para eliminar redundancias e inconsistencias, garantizando integridad de datos. (Cotrino & Vega, 2017)</div>
+    </div>
+    <div class="term-item">
+      <div class="term-name">Business Intelligence (BI)</div>
+      <div class="term-def">Estrategias y herramientas que transforman datos operativos en información estratégica para decisiones organizacionales. (Yildiz & Yildirim, 2022)</div>
+    </div>
+  </div>
+</div>
+
+<!-- Phase Connector -->
+<div class="phase-connector">
+  <div class="connector-line"></div>
+</div>
+
+<!-- ═══════════ FASE 4 ═══════════ -->
+<div class="section-header phase-4">
+  <div class="phase-number">4</div>
+  <div class="section-title">
+    <h2>Redacción de Antecedentes</h2>
+    <p>Síntesis argumentativa y aporte a la investigación</p>
+  </div>
+  <div class="divider"></div>
+</div>
+
+<div class="redaccion-section">
+  <div class="redaccion-grid">
+
+    <div class="redaccion-card">
+      <div class="rc-num rc-num-1">1</div>
+      <div class="rc-content">
+        <div class="rc-citation">Yildiz & Yildirim (2022)</div>
+        <div class="rc-body">Abordan la implementación de un sistema de información para gestión y análisis de movilidad estudiantil universitaria, destacando arquitecturas tecnológicas que integran herramientas de Business Intelligence para facilitar la interpretación de grandes volúmenes de información y apoyar la toma de decisiones institucionales.</div>
+        <div class="rc-aporte">→ Aporta fundamentos técnicos para el sistema web con BD centralizada e incorporación de Power BI para análisis en la UAC.</div>
+      </div>
+    </div>
+
+    <div class="redaccion-card">
+      <div class="rc-num rc-num-2">2</div>
+      <div class="rc-content">
+        <div class="rc-citation">Fernández Gironza & Guevara Campo (2020)</div>
+        <div class="rc-body">Presentan el desarrollo de un sistema de información para gestión de movilidad e internacionalización en universidad colombiana, destacando la importancia de la integridad y consistencia de la información mediante bases de datos relacionales y mecanismos de control y validación.</div>
+        <div class="rc-aporte">→ Fundamenta el diseño de sistema web con BD estructurada, enfatizando la calidad de datos como elemento central.</div>
+      </div>
+    </div>
+
+    <div class="redaccion-card">
+      <div class="rc-num rc-num-3">3</div>
+      <div class="rc-content">
+        <div class="rc-citation">Cotrino Rico & Vega Márquez (2017)</div>
+        <div class="rc-body">Presentan el desarrollo de un sistema de información web para movilidad académica usando arquitecturas cliente-servidor y herramientas de desarrollo web. Destacan metodologías ágiles y módulos funcionales para gestión de usuarios, registro de datos y seguimiento de procesos.</div>
+        <div class="rc-aporte">→ Valida directamente tecnologías web, BD relacionales y arquitecturas estructuradas como solución al problema de información dispersa en la UAC.</div>
+      </div>
+    </div>
+
+    <div class="redaccion-card">
+      <div class="rc-num rc-num-4">4</div>
+      <div class="rc-content">
+        <div class="rc-citation">Parra Payares (2026)</div>
+        <div class="rc-body">Aborda el desarrollo de una solución informática para la Oficina de Relaciones Internacionales, enfatizando la arquitectura de software y estructuración de BD para facilitar el acceso y análisis de información. Describe técnicas para administración de datos garantizando calidad, pertinencia y usabilidad.</div>
+        <div class="rc-aporte">→ Aporta fundamentos para BD centralizada de movilidad y respalda la integración de Power BI como herramienta de visualización institucional.</div>
+      </div>
+    </div>
+
+    <div class="redaccion-card">
+      <div class="rc-num rc-num-5">5</div>
+      <div class="rc-content">
+        <div class="rc-citation">Silva Ramírez (2021)</div>
+        <div class="rc-body">Presenta la implementación de análisis de datos con Power BI en institución educativa peruana, evidenciando procesos de integración, transformación y modelado de datos para dashboards interactivos. Destaca la consolidación de datos de distintas fuentes para generación de indicadores con filtros y segmentaciones.</div>
+        <div class="rc-aporte">→ Aporta fundamentos técnicos para Power BI como herramienta de visualización y análisis de movilidad por facultad, modalidad y periodo en la UAC.</div>
+      </div>
+    </div>
+
+    <div class="redaccion-card">
+      <div class="rc-num rc-num-6">6</div>
+      <div class="rc-content">
+        <div class="rc-citation">Quiroz Barbadillo (2024)</div>
+        <div class="rc-body">Presenta el desarrollo de un sistema de información con BD como elemento central para organización, almacenamiento y consulta en procesos administrativos. Resalta la plataforma centralizada para reducir dispersión de registros e incorpora herramientas de visualización y análisis para reportes gráficos institucionales peruanos.</div>
+        <div class="rc-aporte">→ Valida en contexto peruano el sistema web con BD centralizada y justifica Power BI para patrones de participación por facultad y periodo.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    <strong>Taller: Construcción del Marco Teórico</strong> &nbsp;·&nbsp;
+    Universidad Andina del Cusco &nbsp;·&nbsp; Ingeniería de Sistemas
+  </div>
+  <div class="footer-right">
+    <div class="footer-dot"></div>
+    <div class="footer-dot"></div>
+    <div class="footer-dot"></div>
+  </div>
+</div>
+
+</body>
+</html>
